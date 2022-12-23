@@ -1,0 +1,26 @@
+@import "../../Shared/layout/styles/button.scss";
+@import '../../Shared/layout/styles/screensize.scss';
+
+.card{
+    border: none;
+}
+.card-body{
+    background: whitesmoke;
+    border-radius: 1rem;
+    padding: 2rem;
+    width: 20rem;
+    @include xs {
+        width: 16rem;
+        padding: 1.4rem;
+      }
+}
+
+.size_btn{
+    height: 3rem;
+    width: 16rem;
+    
+    @include xs {
+        width: 13rem;
+        padding: .4rem;
+      }
+}

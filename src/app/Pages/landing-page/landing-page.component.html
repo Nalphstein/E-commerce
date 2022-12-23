@@ -1,0 +1,351 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<!-- <nav class="navbar navbar-expand-lg navbar-white bg-white">
+  <div class="container">
+    <a class="navbar-brand fs-1" routerLink="">
+      <h2>ARTIPS</h2>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navmenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-light" type="submit">🔍</button>
+        </form>
+        <li class="nav-item active">
+          <a class="nav-link" aria-current="page" routerLink="/about-us"
+            >About us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rout3erLink="blogs">Contact us</a>
+        </li>
+
+        <li class="nav-item">
+          <button
+            class="nav-link btn btn-warning"
+            routerLink="/login"
+            (click)="menucollapse = true"
+          >
+            Login
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<section class="mb-5" style="background-color: whitesmoke" start="1" id="home">
+  <div class="container-fluid">
+    <div class="row mx-auto" style="width: 80%">
+      <div class="col-md-12 col-lg-6 col-12 mb-5">
+        <img [src]="nails" alt="nails" class="img-size img-fluid" />
+      </div>
+      <div class="col-md-12 col-lg-6 col-12 mb-5">
+        <img [src]="nailstrips" alt="nails" class="img-size img-fluid" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--ABOUT US-->
+<section class="mb-5" start="1" id="about-us">
+  <div class="container mt-5">
+    <div class="row mt-5">
+      <div class="col-12 mt-5">
+        <h2 class="text-center text-decoration-underline ">About Us</h2>
+        <div class="row mt-5">
+          <div class="col-12 col-md-12 col-lg-6 mb-5 order-lasts">
+            <div class="mt-5 text-center">
+              <h4 class="mb-3 text-decoration-underline">
+                A Spark of Personality
+              </h4>
+            </div>
+            <p class="mt-5 ms-lg-5 text-wrapped text-center text-capitalize">
+              Personality may not be something that is obvious at first glance,
+              but look a little closer and you will notice the little details
+              that make every person unique. Our brand is about celebrating the
+              little sparks of personality that make you who you are.
+            </p>
+          </div>
+          <div class="col-12 col-md-12 col-lg-6 mt-5 order-firsts text-center">
+            <img
+              alt="amico"
+              src="../../../assets/images/Artips_Style5_145+copy.jpg.opdownload"
+              class="img-fluid img-padd"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-6 mt-5 text-center">
+          <img
+            alt="amico"
+            src="  ../../../assets/images/Artips_Style2_122+copy.jpg"
+            class="img-fluid img-padd mb-5"
+          />
+        </div>
+        <div class="col-12 col-md-12 col-lg-6 mb-5">
+          <div class="mt-5 pe-5 mb-5">
+            <h4 class="text-decoration-underline text-center ms-5 text-capitalize">
+              Get A Polished Look Without The Polish
+            </h4>
+          </div>
+          <p class="text-wrapped mb-5 text-center">
+            A fresh manicure can make you feel beautiful and put-together like
+            nothing else can. But fitting nail appointments into your busy
+            schedule and spending hours on a little chair breathing in fumes at
+            the nail salon every few weeks can feel like it’s hardly worth it.
+            At Artips, we believe that changing up your look, expressing
+            yourself, and feeling beautiful should be easy and fun. That’s why
+            we’ve transformed the process of getting your nails done to keep up
+            with your busy lifestyle. With zero drying time, simple removal, and
+            no additional tools necessary, you’ll be able to instantly change up
+            your nails whenever you’d like — whether that’s during lunchtime at
+            work, while you’re prepping for a dinner date, or right before going
+            to bed. Enjoy all the extra time you have and spend time doing the
+            things you truly care about. Don’t forget to take photos along the
+            way! #myartips
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- //comments section/// -->
+
+<div class="container-fluid mt-5">
+  <div class="row mt-5" style="background: whitesmoke; height: 30rem">
+    <div class="mt-3"></div>
+    <div class="col-12 col-md-8 col-lg-6 mt-4 text-start">
+      <h3 class="text-start mt-4 comments">What People Are Saying</h3>
+
+      <p class="fs-4 mt-5 dry_text">
+        "I Can't Speak Highly Enough Of These. They Are Very Easy To Apply And
+        Need No Dry Time."
+      </p>
+      <p class="mt-5 px-5">- Brittany, WA</p>
+    </div>
+    <div class="col-12 col-md-4 col-lg-6 mt-5 px-4 mb-5">
+      <p class="mt-4"></p>
+      <p class="fs-4 text-end comments">Read More</p>
+    </div>
+  </div>
+</div>
+<div class="row mt-5 mx-auto" style="width: 80%">
+  <div class="col-md-12 col-lg-6 col-12 mt-5 mb-5">
+    <img [src]="yellow" alt="nails" class="img-size" />
+  </div>
+  <div class="col-md-12 col-lg-6 col-12 mt-5 mb-5">
+    <img [src]="art" alt="nails" class="img-size pe-6" />
+  </div>
+</div>
+
+<!-- Gallery Section -->
+<section class="mt-5" style="background: whitesmoke">
+  <div class="container-fluid">
+    <div class="row mt-5 wheat">
+      <div class="col-6 mt-5">
+        <p class="mt-5 fs-4 fw-bold ms-4">Share your spark #myartips</p>
+      </div>
+      <div class="col-6 mt-5">
+        <p class="mt-5 text-end">@Artipsstudio</p>
+      </div>
+
+      <div class="col-12 mt-4">
+        <owl-carousel-o [options]="customOptions" class="mt-4">
+          <ng-template carouselSlide class="mt-4">
+            <img
+              src="../../../assets/images/457C3262-9945-456A-907E-B3637F28DFF6.jpg"
+              class="img-responsive"
+              alt="image"
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              src="../../../assets/images/8EE07D28-3792-482C-867D-435E639C98CC.jpg"
+              class="img-responsive w-10"
+              alt="image"
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              src="../../../assets/images/47797223-B423-4A21-A256-5E7F487790D7.jpg"
+              class="d-block w-10 h-10"
+              alt="image"
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              src="../../../assets/images/6F720358-C382-413B-A18B-B663D265A1B2.jpg"
+              class="d-block w-10 h-10"
+              alt="..."
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              src="../../../assets/images/4269A953-8342-486F-A456-32820B42B262.jpg"
+              class="d-block w-10 h-10"
+              alt="..."
+            />
+          </ng-template>
+          <ng-template carouselSlide>
+            <img
+              src="../../../assets/images/BD99AD81-B912-44FC-84B8-68433054EF75.jpg"
+              class="d-block w-10 h-10"
+              alt="..."
+            />
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Last Section-->
+
+<div class="container mt-3">
+  <div class="row mt-5">
+    <div class="col-12 mt-4">
+      <h4 class="text-center">Artips Ready-To-Wear Gel Nail Strips</h4>
+    </div>
+
+    <div class="col-12 col-md-4 mt-5">
+      <h6>Safe & Non-Damaging</h6>
+      <p>
+        Our nail strips are non-toxic, vegan, cruelty-free and 10-free! Get
+        stylish gel nails done at home without harsh chemicals, UV lights or
+        rough filing & drilling.
+      </p>
+    </div>
+    <div class="col-12 col-md-4 mt-5">
+      <h6>Made With Real Gel</h6>
+      <p>
+        OMade with real gel coating for a high gloss and long lasting finish You
+        can have beautiful nails that look as if they were done at the salon
+        every time.
+      </p>
+    </div>
+    <div class="col-12 col-md-4 mt-5">
+      <h6>No Drying Time</h6>
+      <p>
+        Drying time is not required for our gel nail strips. Apply with our mini
+        nail file included in the package. When it’s time to remove, simply peel
+        off the strips.
+      </p>
+    </div>
+
+    <div class="col-12 text-center mt-5">
+      <p>Sign up to stay in the loop with new products, events, and news.</p>
+      <form class="row justify-content-center">
+        <div class="col-12" style="width: 30%">
+          <label
+            for="Email Address"
+            formControlName="email"
+            class="visually-hidden"
+            >Email</label
+          >
+          <input
+            type="email"
+            class="form-control"
+            id="Email Address"
+            placeholder="email"
+          />
+        </div>
+        <div class="col-12 mt-3">
+          <button type="submit" class="btn btn-primary mb-5" style="width: 20%">
+            Confirm Email
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--F.A.Q Section-->
+<section class="mt-5" start="1" id="FAQ">
+  <div class="col-12 mt-5" style="background-color: whitesmoke">
+    <div class="mt-5"></div>
+    <div class="container mt-5">
+      <div class="row mt-5">
+        <h2 class="text-start p-4 mt-5">Frequently Asked Question</h2>
+
+        <accordion [isAnimated]="true">
+          <accordion-group class="mt-5 mb-5">
+            <button
+              class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none accordion-decoration"
+              accordion-heading
+              type="button"
+            >
+              <div class="pull-left float-left">
+                <h4 class="mt-5" style="color: black">How To Apply?</h4>
+              </div>
+              <div class="mt-5 rounded-circle border circle">
+                <h4 class="mt-2">+</h4>
+              </div>
+            </button>
+          </accordion-group>
+
+          <accordion-group class="mt-5 mb-5">
+            <button
+              class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none accordion-decoration"
+              accordion-heading
+              type="button"
+            >
+              <div class="pull-left float-left">
+                <h4 class="mt-5" style="color: black">
+                  How Much Does Artips Nails Cost?
+                </h4>
+              </div>
+              <div class="mt-5 rounded-circle border circle">
+                <h4 class="mt-2">+</h4>
+              </div>
+            </button>
+            Artips Nails aren't expensive.
+          </accordion-group>
+
+          <accordion-group class="mt-5 mb-5">
+            <button
+              class="btn btn-link btn-block justify-content-between d-flex w-100 shadow-none accordion-decoration"
+              accordion-heading
+              type="button"
+            >
+              <div class="pull-left float-left">
+                <h4 class="mt-5" style="color: black">
+                  What Is The Guide To The Perfect Nails
+                </h4>
+              </div>
+              <div class="mt-5 rounded-circle border circle">
+                <h4 class="mt-2">+</h4>
+              </div>
+            </button>
+          </accordion-group>
+        </accordion>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mt-5" start="1" id="Contact-us">
+  <app-contact-section></app-contact-section>
+</div>
+
+<div>
+  <app-footer></app-footer>
+</div>
+<!-- </div>-->

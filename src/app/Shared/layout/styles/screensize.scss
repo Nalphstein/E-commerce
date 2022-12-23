@@ -1,0 +1,65 @@
+// Extra Small Device
+@mixin xs {
+    @media (max-width: 575.98px) {
+      @content;
+    }
+  }
+  
+  .xs_hide {
+    @include xs {
+      display: none !important;
+    }
+  }
+  
+  // Small Device
+  @mixin sm {
+    @media (min-width: 576px) and (max-width: 767.98px) {
+      @content;
+    }
+  }
+  
+  .sm_hide {
+    @include sm {
+      display: none !important;
+    }
+  }
+  
+  // Medium Device
+  @mixin md {
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      @content;
+    }
+  }
+  
+  .md_hide {
+    @include md {
+      display: none !important;
+    }
+  }
+  
+  // Large Device
+  @mixin lg {
+    @media (min-width: 992px) and (max-width: 1199.98px) {
+      @content;
+    }
+  }
+  
+  .lg_hide {
+    @include lg {
+      display: none !important;
+    }
+  }
+  
+  // Extra Large Device
+  @mixin xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+  
+  .xl_hide {
+    @include xl {
+      display: none !important;
+    }
+  }
+  
