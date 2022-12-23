@@ -85,8 +85,8 @@ export class EditpageComponent implements OnInit {
     };
 
 
-     this._dashboard.Editproduct(postbody).subscribe(
-        (res) => {
+    //  this._dashboard.Editproduct(postbody).subscribe(
+    //     (res) => {
     let currentList = localStorage.getItem('productlist');
     if (currentList) {
       let productList: Array<any> = JSON.parse(currentList);
@@ -98,12 +98,12 @@ export class EditpageComponent implements OnInit {
       localStorage.setItem('productList', JSON.stringify([newListItem]));
     }
     this.modalService.hide()
-  }, 
-  (err: any) => {
-    console.log();
-    this._router.navigate(['dashboard']);
-    console.log("Error Occured, can not edit product");
-  });
+  // }, 
+  // (err: any) => {
+  //   console.log();
+  //   this._router.navigate(['dashboard']);
+  //   console.log("Error Occured, can not edit product");
+  // });
 }
 
    dismiss(){
