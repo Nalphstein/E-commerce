@@ -88,7 +88,7 @@ export class CreatepasswordComponent implements OnInit {
       },
       (err: any) => {
         this.router.navigate(['']);
-        console.log('user already created', err);
+        alert('user already created');
       }
     );
 

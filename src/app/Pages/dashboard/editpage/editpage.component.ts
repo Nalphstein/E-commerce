@@ -8,6 +8,8 @@ import {
 
 import { DashboardComponent } from '../dashboard.component';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
+import { DashboardService } from 'src/app/Shared/services/api/dashboard-service/dashboard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editpage',
@@ -29,7 +31,7 @@ export class EditpageComponent implements OnInit {
 
   editform!: FormGroup;
 
-  constructor(private modalService: BsModalService, private _fb: FormBuilder, private bsmodalref: BsModalRef) {}
+  constructor(private modalService: BsModalService, private _fb: FormBuilder, private bsmodalref: BsModalRef, private _dashboard: DashboardService, private _router: Router) {}
 
   ngOnInit(): void {
     this.forms()
@@ -41,7 +43,7 @@ export class EditpageComponent implements OnInit {
       description: this.user.description
     }
 
-console.log(this.editform.patchValue(newobj))
+// console.log(this.editform.patchValue(newobj))
 
     
 
@@ -67,10 +69,28 @@ console.log(this.editform.patchValue(newobj))
       price: '$' + this.editform.value.price,
     };
 
+
+
+    type PostBody = {
+      name: string;
+      image: string;
+      price: string;
+      description: string;
+    };
+    const postbody: PostBody = {
+      name: this.editform.value.name,
+      image: this.editform.value.image,
+      price: this.editform.value.price,
+      description: this.editform.value.description,
+    };
+
+
+     this._dashboard.Editproduct(postbody).subscribe(
+        (res) => {
     let currentList = localStorage.getItem('productlist');
     if (currentList) {
       let productList: Array<any> = JSON.parse(currentList);
-      //  productList.push(newListItem);
+       productList.push(newListItem);
       localStorage.setItem('productList', JSON.stringify([newListItem]));
 
       
@@ -78,8 +98,13 @@ console.log(this.editform.patchValue(newobj))
       localStorage.setItem('productList', JSON.stringify([newListItem]));
     }
     this.modalService.hide()
-  }
-
+  }, 
+  (err: any) => {
+    console.log();
+    this._router.navigate(['dashboard']);
+    console.log("Error Occured, can not edit product");
+  });
+}
 
    dismiss(){
     this.bsmodalref?.hide()

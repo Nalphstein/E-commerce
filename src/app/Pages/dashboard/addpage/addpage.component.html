@@ -1,10 +1,11 @@
-<section>  <div class="mt-5 mx-auto col-12 bg-light shadow">
+<section>
+  <div class="mt-5 mx-auto col-12 bg-light shadow">
     <div class="container">
       <div class="row mb-5">
         <div class="col-12 mt-4">
           <h4 class="text-center">Add a new item</h4>
 
-          <form class="mt-4" [formGroup]="addform">
+          <form class="mt-4" [formGroup]="addform" method="POST" enctype="">
             <div class="col-12">
               <label for="validationDefault01" class="form-label">Name</label>
               <input
@@ -31,19 +32,26 @@
               />
             </div>
 
-
             <div class="input-group mt-5">
+              <!-- <img [src]="url" height="200rem" class="col-12 mt-5" /> -->
+              <input
+                type="file"
+                class="form-control"
+                id="inputGroupFile02"
+                formControlName="image"
+                name="image"
+                required
 
-              <img [src]="url" height="200rem" class="col-12 mt-5"/>
-              <input type="file" class="form-control" id="inputGroupFile02" formControlName="image" name="image" required  (change)="onFileChange($event)">
-              <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                
+                (change)="onFileChange($event)"
+              />
+              <label class="input-group-text" for="inputGroupFile02"
+                >Upload</label
+              >
             </div>
-            
 
             <div class="col-12 mt-4">
-              <label for="validationDefault02" class="form-label"
-                >Price</label
-              >
+              <label for="validationDefault02" class="form-label">Price</label>
               <input
                 type="text"
                 class="form-control p-2"
@@ -53,7 +61,7 @@
                 value=""
               />
             </div>
-         
+
             <div class="col-12 mt-4">
               <label for="validationDefault04" class="form-label"
                 >Categories
@@ -71,8 +79,10 @@
                 Cancel
               </button>
 
-              <button class="btn btn-warning text-light p-3" type="submit"
-              (click)="save()"
+              <button
+                class="btn btn-warning text-light p-3"
+                type="submit"
+                (click)="save()"
               >
                 Save
               </button>
@@ -82,5 +92,4 @@
       </div>
     </div>
   </div>
-
 </section>

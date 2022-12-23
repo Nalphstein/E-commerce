@@ -25,4 +25,19 @@ export class DashboardService {
       body,
     );
   }
+  Editproduct(body: any): Observable<any> {
+
+    return this.http.post<any>(
+      'https://ecom.hoolioapps.com/api/products/'
+      ,
+      body,
+    );
+  }
+  Displayproduct(): Observable<any> {
+
+
+    return this.http.get<any>(
+      'https://ecom.hoolioapps.com/api/products'
+    );
+  }
 }

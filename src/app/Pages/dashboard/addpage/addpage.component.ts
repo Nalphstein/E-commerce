@@ -8,6 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
+// import { FileUploader } from 'ng2-file-upload/file-upload/file-uploader.class';
 import { DashboardService } from 'src/app/Shared/services/api/dashboard-service/dashboard.service';
 
 @Component({
@@ -33,17 +34,20 @@ export class AddpageComponent implements OnInit {
     private _fb: FormBuilder,
     private _dashboard: DashboardService,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    // private uploader: FileUploader
   ) {}
 
   
 
   ngOnInit(): void {
     this.forms();
-   
+    
+    // this.uploader.uploadAll();
+    
   }
-
-  url= ' ../../../../assets/images/032122_ARTIPS_FLORET_024.jpg';
+  
+  url= '../../assets/images/undraw_add_file2_gvbb.svg';
 
   forms() {
     this.addform = this._fb.group({
@@ -56,24 +60,37 @@ export class AddpageComponent implements OnInit {
       price: new FormControl(''),
     });
   }
-
+  
   onFileChange(event:any) {
+    
+    // if(event.target.files){
+    //   let reader = new FileReader();
+    //   reader.readAsDataURL(event.target.files[0]);
+      
+    //   const formData: FormData = new FormData();
+      
+    //   formData.append('image', event.target.files[0], event.target.files[0].name);
 
-    if(event.target.files){
-      let reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0]);
+      // const image = new Blob(event.target.files[0], {type: "image"});
+      
+      // this.addform.value.image = image;
 
-      reader.onload = (event:any) => {
-        this.url = event.target.result;
-      }
+      
+      // const buffer = reader.result;
+      
+      // reader.onload = (event:any) => {
+      //   this.url = event.target.result;
+      // }
 
-      this.addform.value.image =this.url;
+      // this.addform.value.image = buffer;
 
+      // reader.readAsText( event.target.files[0])
     }
 
+
     // if(event.target.files && event.target.files.length){
-    //   const file = event.target.files[0];
-    //   this.http.get('../../../../assets/images/032122_ARTIPS_FLORET_024.jpg',{responseType: 'blob'}).subscribe(data => {
+      //   const file = event.target.files[0];
+      //   this.http.get('../../../../assets/images/032122_ARTIPS_FLORET_024.jpg',{responseType: 'blob'}).subscribe(data => {
     //     this.addform.patchValue({
     //       image: data
     //     });
@@ -81,7 +98,7 @@ export class AddpageComponent implements OnInit {
       
     // }
 
-  }
+  // }
 
   
 
@@ -93,9 +110,9 @@ export class AddpageComponent implements OnInit {
 
     let newListItem = {
       // image: this.url,
-
       
-      image: this.addform.value.image,
+      
+      image: 'https:picsum.photos/200/300',
       name: this.addform.value.name,
       description: this.addform.value.description,
       price: '$' + this.addform.value.price,
@@ -117,8 +134,8 @@ export class AddpageComponent implements OnInit {
     // let formData = new FormData();
     // formData.append('image', this.addform.value.image);
 
-    this._dashboard.Createproduct(postbody).subscribe(
-      (res) => {
+    // this._dashboard.Createproduct(postbody).subscribe(
+    //   (res) => {
         let currentList = localStorage.getItem('productList');
         if (currentList) {
           let productList: Array<any> = JSON.parse(currentList);
@@ -131,12 +148,13 @@ export class AddpageComponent implements OnInit {
           localStorage.setItem('productList', JSON.stringify([newListItem]));
         }
         this.modalService.hide();
-      },
-      (err: any) => {
-        console.log();
-        this.router.navigate(['dashboard']);
-        console.log("you didn't do this well");
-      }
-    );
+      // },
+      // (err: any) => {
+      //   console.log();
+      //   this.router.navigate(['dashboard']);
+      //   console.log(this.addform.value.image);
+      //   console.log("Error Occured, can not add product");
+      // }
+    // );
   }
 }

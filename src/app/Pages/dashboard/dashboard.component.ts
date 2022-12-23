@@ -5,6 +5,7 @@ import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { AddpageComponent } from './addpage/addpage.component';
 // import { dashboardService } from './dashboard.service';
 import { Router } from '@angular/router';
+import { DashboardService } from 'src/app/Shared/services/api/dashboard-service/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -48,21 +49,15 @@ export class DashboardComponent implements OnInit {
 
   // content = EditpageComponent;
 
-  constructor(private modalService: BsModalService, private router: Router) {}
+  constructor(private modalService: BsModalService, private router: Router, private daservice: DashboardService) {}
 
 
   // formvalue = this.editsformvalue;
 
   ngOnInit(): void {
     this.getDashboardInfo();
-    // let currentList = localStorage.getItem('productList');
-    // if (currentList) {
-    //   let productList: Array<any> = JSON.parse(currentList);
-    //   this.products = [...this.originalProducts, ...productList].reverse();
-    //   console.log(this.products);
-    // }
-    // this.confirm();
-    // this.decline();
+
+
     this.UpdateProducts();
   }
 
@@ -80,8 +75,8 @@ export class DashboardComponent implements OnInit {
 
   UpdateProducts(): void {
 
-  
-  
+
+    this.daservice.Displayproduct().subscribe((_res) => {
     
     setInterval(() => {
       let currentList = localStorage.getItem('productList');
@@ -93,7 +88,16 @@ export class DashboardComponent implements OnInit {
       } else {
         this.products = this.originalProducts;
       }
-    }, 2000); try{
+    }, 2000);
+    
+    },
+      (_err: any) => {
+        console.log();
+        this.router.navigate(['dashboard']);
+        console.log("Error Occured, can not add product");
+      }
+    );
+    try{
       this.products = this.originalProducts;
     } catch{
       alert('error');
