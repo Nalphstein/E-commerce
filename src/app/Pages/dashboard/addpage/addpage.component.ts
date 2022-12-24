@@ -112,7 +112,7 @@ export class AddpageComponent implements OnInit {
       // image: this.url,
       
       
-      image: 'https:picsum.photos/200/300',
+      image: '../../../../assets/images/032122_ARTIPS_FLORET_056.jpg',
       name: this.addform.value.name,
       description: this.addform.value.description,
       price: '$' + this.addform.value.price,
