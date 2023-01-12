@@ -29,7 +29,7 @@ export class InterceptorInterceptor implements HttpInterceptor {
     if (API_key) {
       return next.handle(request.clone({ 
         setHeaders: { 
-          Accept: 'application/json',
+          // Accept: 'application/json',
         Authorization: `Bearer ${API_key}`, 
       },
     }));

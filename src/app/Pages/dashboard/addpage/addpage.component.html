@@ -5,7 +5,7 @@
         <div class="col-12 mt-4">
           <h4 class="text-center">Add a new item</h4>
 
-          <form class="mt-4" [formGroup]="addform" method="POST" enctype="">
+          <form class="mt-4" [formGroup]="addform" method="POST" enctype="multipart/form-data">
             <div class="col-12">
               <label for="validationDefault01" class="form-label">Name</label>
               <input
@@ -36,6 +36,7 @@
               <!-- <img [src]="url" height="200rem" class="col-12 mt-5" /> -->
               <input
                 type="file"
+                accept="image/*"
                 class="form-control"
                 id="inputGroupFile02"
                 formControlName="image"

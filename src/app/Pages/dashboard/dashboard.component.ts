@@ -23,26 +23,7 @@ export class DashboardComponent implements OnInit {
   message?: string;
 
   originalProducts: any[] = [
-    // {
-    //   image: 'https://picsum.photos/200/300/',
-    //   name: 'FLORETTE',
-    //   Price: '$8.00',
-    // },
-    // {
-    //   image: 'https://picsum.photos/200/300/',
-    //   name: 'FLORETTE',
-    //   Price: '$8.00',
-    // },
-    // {
-    //   image: 'https://picsum.photos/200/300/',
-    //   name: 'FLORETTE',
-    //   Price: '$8.00',
-    // },
-    // {
-    //   image: 'https://picsum.photos/200/300/',
-    //   name: 'FLORETTE',
-    //   Price: '$8.00',
-    // },
+
   ];
 
   public products = this.originalProducts
@@ -56,9 +37,10 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getDashboardInfo();
-
-
+    
+    
     this.UpdateProducts();
+    console.log(this.UpdateProducts)
   }
 
   currentList: string | null = localStorage.getItem('productList');
@@ -94,7 +76,7 @@ export class DashboardComponent implements OnInit {
       (_err: any) => {
         console.log();
         this.router.navigate(['dashboard']);
-        console.log("Error Occured, can not add product");
+        console.log(_err);
       }
     );
     try{
