@@ -5,9 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { Location } from '@angular/common';
 // import { FileUploader } from 'ng2-file-upload/file-upload/file-uploader.class';
 import { DashboardService } from 'src/app/Shared/services/api/dashboard-service/dashboard.service';
 
@@ -34,6 +35,7 @@ export class AddpageComponent implements OnInit {
     private _fb: FormBuilder,
     private _dashboard: DashboardService,
     private router: Router,
+    private location: Location,
     private http: HttpClient // private uploader: FileUploader
   ) {}
 
@@ -148,60 +150,32 @@ export class AddpageComponent implements OnInit {
     formdata.append('price', `${this.addform.value.price}`);
     
 
-    // let myHeaders = new HttpHeaders();
-    // let token = localStorage.getItem('token');
-    // myHeaders.append('Authorization', `Bearer ${token}`);
-    // myHeaders.append('Token', `${token}`);
-    // myHeaders.append('Content-Type', 'multipart/form-data');
-
-    // return this.http
-    //   .post(
-        
-    //     'https://ecom.hoolioapps.com/api/products',
-    //     formdata,
-    //     { headers: myHeaders }
-    //   )
-    //   .subscribe(
-    //     (res) => {
-    //       console.log(res);
-    //       console.log(formdata.getAll('price'));
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //       console.log(formdata.getAll('image'));
-    //       console.log(this.addform.value.image)
-    //     }
-    //   );
-
-    // const postbody: PostBody = {
-    //   name: this.addform.value.name,
-    //   image: this.addform.value.image,
-    //   price: this.addform.value.price,
-    //   description: this.addform.value.description,
-    // };
-
-    // let formData = new FormData();
-    // formData.append('image', this.addform.value.image);
+    
 
     this._dashboard.Createproduct(formdata).subscribe(
       (res) => {
-        let currentList = localStorage.getItem('productList');
+        let currentList = localStorage.getItem('product');
         if (currentList) {
           let productList: Array<any> = JSON.parse(currentList);
           productList.push(newListItem);
-          localStorage.setItem('productList', JSON.stringify(productList));
+          localStorage.setItem('product', JSON.stringify(productList));
 
           const userObject = JSON.stringify(formdata);
-          localStorage.setItem('productlist', userObject);
+          localStorage.setItem('product', userObject);
         } else {
-          localStorage.setItem('productList', JSON.stringify([newListItem]));
+          localStorage.setItem('product', JSON.stringify([newListItem]));
         }
-        this.modalService.hide();
       },
       (err: any) => {
         console.log(err);
-
+        
       }
-    );
+      );
+      // this.router.navigate(['/dashboard']);
+      this.modalService.hide();
+      this.addform.reset();
+      this.location.go(this.location.path());
+      location.reload();
+  
   }
 }

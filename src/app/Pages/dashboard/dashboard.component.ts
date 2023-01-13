@@ -4,7 +4,7 @@ import { EditpageComponent } from './editpage/editpage.component';
 import { BsModalService, BsModalRef, ModalOptions } from 'ngx-bootstrap/modal';
 import { AddpageComponent } from './addpage/addpage.component';
 // import { dashboardService } from './dashboard.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { DashboardService } from 'src/app/Shared/services/api/dashboard-service/dashboard.service';
 
 @Component({
@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit {
 
   bsModalRef?: BsModalRef;
   message?: string;
+  allProducts:Array<any>=[];
 
   originalProducts: any[] = [
 
@@ -30,20 +31,21 @@ export class DashboardComponent implements OnInit {
 
   // content = EditpageComponent;
 
-  constructor(private modalService: BsModalService, private router: Router, private daservice: DashboardService) {}
+  constructor(private modalService: BsModalService, private router: Router, private _dashboardServices: DashboardService) {}
 
 
   // formvalue = this.editsformvalue;
 
   ngOnInit(): void {
     this.getDashboardInfo();
+    this.getProducts()
     
     
     this.UpdateProducts();
-    console.log(this.UpdateProducts)
+    // console.log(this.UpdateProducts)
   }
 
-  currentList: string | null = localStorage.getItem('productList');
+  currentList: string | null = localStorage.getItem('product');
 
   Add() {
     const initialState: ModalOptions = {
@@ -55,13 +57,22 @@ export class DashboardComponent implements OnInit {
     // this.modalRef.content.name = 'Muhammad';
   }
 
+  getProducts(){
+    this._dashboardServices.Displayproduct().subscribe((res:any)=>{
+      this.allProducts = res.data.reverse();
+      // this.products = [...this.originalProducts, ...this.allProducts].reverse();
+
+      console.log(this.allProducts)
+    })
+  }
+
   UpdateProducts(): void {
 
 
-    this.daservice.Displayproduct().subscribe((_res) => {
+    this._dashboardServices.Displayproduct().subscribe((_res) => {
     
-    setInterval(() => {
-      let currentList = localStorage.getItem('productList');
+    
+      let currentList = localStorage.getItem('product');
       if (currentList) {
         let productList: Array<any> = JSON.parse(currentList);
         this.products = [...this.originalProducts, ...productList].reverse();
@@ -70,7 +81,7 @@ export class DashboardComponent implements OnInit {
       } else {
         this.products = this.originalProducts;
       }
-    }, 2000);
+    
     
     },
       (_err: any) => {
@@ -96,7 +107,7 @@ export class DashboardComponent implements OnInit {
  
   Edit() {
 
-    let currentList = localStorage.getItem('productList');
+    let currentList = localStorage.getItem('product');
     
     const initialState: ModalOptions = {
       initialState: {
@@ -119,9 +130,26 @@ export class DashboardComponent implements OnInit {
   }
 
 
+// Deleteproduct(id: number) {
+//   let products = JSON.parse(localStorage.getItem('product'));
 
+// }
 
+  
 
+  Delete(template: TemplateRef<any>) {
+    
+    this.bsModalRef = this.modalService.show(template, {class: 'modal-sm'});
+    // this.bsModalRef.setClass('modal-dialog-centered');
+  }
+
+  // deleteProduct(id: number) {
+  //   let products = JSON.parse(localStorage.getItem('product'));
+  //   products = products.filter((allProducts) => product.id !== id);
+  //   localStorage.setItem('products', JSON.stringify(products));
+  // }
+
+  
   
   filterByTimeframe(value: string) {
     this.timeframe = value;
@@ -134,33 +162,31 @@ export class DashboardComponent implements OnInit {
     };
   }
 
-  Delete(template: TemplateRef<any>) {
-    
-    this.bsModalRef = this.modalService.show(template, {class: 'modal-sm'});
-    // this.bsModalRef.setClass('modal-dialog-centered');
 
-    
-   
-  }
+  confirm(i:any) {
 
-  confirm(i: number) {
 
- 
-    
-     
-    let results = this.products.splice(0,i);
 
-    console.log(results);
-    localStorage.removeItem('productList')
+    // this._dashboardServices.Deleteproduct(i).subscribe((res:any)=>{
+    //   console.log(res) 
+    // })
+
+      let results = this.allProducts.pop();
+  
+      console.log(results);
+      localStorage.removeItem('product')
+        
+        
+       
       
+      localStorage.setItem('product', JSON.stringify(results));
       
-     
+      this.getProducts = results;
+      this.bsModalRef?.hide();
+      alert('Confirmed!');
+
+
     
-    localStorage.setItem('productList', JSON.stringify(results));
-    
-    // this.UpdateProducts = results;
-    this.bsModalRef?.hide();
-    alert('Confirmed!');
   }
  
   decline(): void {

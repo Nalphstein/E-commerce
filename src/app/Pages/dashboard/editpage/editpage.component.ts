@@ -20,7 +20,7 @@ import { Router } from '@angular/router';
 
 export class EditpageComponent implements OnInit {
 
-  rawUser = localStorage.getItem('productlist');
+  rawUser = localStorage.getItem('product');
   user = this.rawUser ? JSON.parse(this.rawUser) : '';
 
 
@@ -30,6 +30,7 @@ export class EditpageComponent implements OnInit {
   // imageUrl?: string;
 
   editform!: FormGroup;
+  url: any = '';
 
   constructor(private modalService: BsModalService, private _fb: FormBuilder, private bsmodalref: BsModalRef, private _dashboard: DashboardService, private _router: Router) {}
 
@@ -77,7 +78,13 @@ export class EditpageComponent implements OnInit {
       price: string;
       description: string;
     };
-    const postbody: PostBody = {
+    // let formdata= new FormData();
+    // formdata.append('name', `${this.editform.value.name}`);
+    // formdata.append('image', this.url);
+    // formdata.append('description', `${this.editform.value.description}`);
+    // formdata.append('price', `${this.editform.value.price}`);
+    
+     const postbody: PostBody = {
       name: this.editform.value.name,
       image: this.editform.value.image,
       price: this.editform.value.price,
@@ -85,32 +92,33 @@ export class EditpageComponent implements OnInit {
     };
 
 
+
     //  this._dashboard.Editproduct(postbody).subscribe(
     //     (res) => {
-    let currentList = localStorage.getItem('productlist');
+    let currentList = localStorage.getItem('product');
     if (currentList) {
       let productList: Array<any> = JSON.parse(currentList);
        productList.push(newListItem);
-      localStorage.setItem('productList', JSON.stringify([newListItem]));
+      localStorage.setItem('product', JSON.stringify([newListItem]));
 
       
     } else {
-      localStorage.setItem('productList', JSON.stringify([newListItem]));
+      localStorage.setItem('product', JSON.stringify([newListItem]));
     }
     this.modalService.hide()
-  // }, 
+  }
   // (err: any) => {
   //   console.log();
   //   this._router.navigate(['dashboard']);
   //   console.log("Error Occured, can not edit product");
   // });
-}
+
 
    dismiss(){
     this.bsmodalref?.hide()
   }
 
-
+  
 
   // imageUrl?: string;
 

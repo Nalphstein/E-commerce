@@ -19,7 +19,7 @@ export class DashboardService {
     let myHeaders = new HttpHeaders();
     let token = localStorage.getItem("token");
     myHeaders.append("Authorization", `Bearer ${token}`);
-    // myHeaders.append("Token", `${token}`);
+   
     myHeaders.append('Content-Type', 'multipart/form-data')
 
 
@@ -36,21 +36,34 @@ export class DashboardService {
       // { name: formdata.get('name'), description: formdata.get('description'), price: formdata.get('price') }
     );
   }
-  Editproduct(body: any): Observable<any> {
 
-    return this.http.post<any>(
-      'https://ecom.hoolioapps.com/api/products'
+  Editproduct(body: any): Observable<any> {
+    return this.http.patch<any>(
+      'https://ecom.hoolioapps.com/api/products/2'
       ,
       body,
     );
   }
+  
   Displayproduct(): Observable<any> {
-
-
     return this.http.get<any>(
       // 'https://fakestoreapi.com/products'
-
       'https://ecom.hoolioapps.com/api/products'
     );
   }
+
+  getSingleProduct(id:any): Observable<any>{
+    return this.http.delete<any>(
+      'https://ecom.hoolioapps.com/api/product'
+    )
+    
+}
+
+// Deleteproduct(id:any): Observable<any>{
+//   return this.http.delete<any>(
+//     'https://ecom.hoolioapps.com/api/product/10'
+//   )
+// }
+
+
 }
