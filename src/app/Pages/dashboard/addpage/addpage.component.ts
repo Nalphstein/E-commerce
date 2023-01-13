@@ -171,11 +171,11 @@ export class AddpageComponent implements OnInit {
         
       }
       );
-      // this.router.navigate(['/dashboard']);
       this.modalService.hide();
       this.addform.reset();
-      this.location.go(this.location.path());
-      location.reload();
+      this.router.navigate(['/dashboard']);
+      // this.location.go(this.location.path());
+      // location.reload();
   
   }
 }
